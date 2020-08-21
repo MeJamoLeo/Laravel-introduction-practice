@@ -16,3 +16,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('/hello', function () {
+//     return '<html><body><h1>Hello</h1><p>This is sample.page</p></body></html>';
+// });
+
+// ヒアドキュメント,パラメータを使ってみる
+Route::get('hello/{name}', function ($name) {
+    $html = <<<EOF
+<html>
+<head>
+<title>Hello</title>
+<style>
+body {font-size:16pt; color:#999;}
+h1 {font-size:100; text-align:right;, color:#0eee;, margin:-40px 0px -50px 0px;}
+</style>
+</head>
+<body>
+    <h1>Hello</h1>
+    <p>This is sample page.</p>
+    <p>これは，サンプルで作ったページです</p>
+    <p>{$name}さん，こんにちはp>
+</body>
+</html>
+EOF;
+    return $html;
+});
