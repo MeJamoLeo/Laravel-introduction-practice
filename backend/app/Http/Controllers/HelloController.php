@@ -24,9 +24,12 @@ function tag($tag, $text)
 
 class HelloController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = ['msg' => 'これはコントローラから渡されたメッセージです．'];
+        $data = [
+            'msg' => 'これはコントローラから渡されたメッセージです．',
+            'id' => $request->id // クエリ文字列を使ったビューテンプレート
+        ];
         // msgに対して値を打ち込め！！
         return view('hello.index', $data);
     }

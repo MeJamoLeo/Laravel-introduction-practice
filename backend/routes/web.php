@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 // indexアクションにルートを割り当てる, ルートパラメータを使ってみる
 // Route::get('hello', 'HelloController@index');
-Route::get('hello/other', 'HelloController@other');
+// Route::get('hello/other', 'HelloController@other');
 
-// phpテンプレートを表示させる
+// phpテンプレートを表示させる.ルートパラメータを使ってみる
 Route::get('hello', 'HelloController@index');
