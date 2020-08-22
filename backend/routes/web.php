@@ -36,9 +36,14 @@ h1 {font-size:100; text-align:right;, color:#0eee;, margin:-40px 0px -50px 0px;}
     <h1>Hello</h1>
     <p>This is sample page.</p>
     <p>これは，サンプルで作ったページです</p>
-    <p>{$name}さん，こんにちはp>
+    <p>{$name}さん，こんにちは<p>
 </body>
 </html>
 EOF;
     return $html;
 });
+
+
+// indexアクションにルートを割り当てる, ルートパラメータを使ってみる
+Route::get('hello', 'HelloController@index');
+Route::get('hello/other', 'HelloController@other');
