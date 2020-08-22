@@ -19,31 +19,15 @@ $end = '</body></html>';
 // タグの種類とコンテンツを関数を用いて作成する
 function tag($tag, $text)
 {
-    return "<{$tag}>". $text. "</{$tag}>";
+    return "<{$tag}>" . $text . "</{$tag}>";
 }
 
 class HelloController extends Controller
 {
     public function index()
     {
-        global $head, $style, $body, $end;
-
-        $html = $head. tag('title', 'Hello/Index'). $style .
-            $body
-            . tag('h1', 'コントローラーを複数使ったindexアクション'). tag('p', 'this is Index page')
-            . '<a href="/hello/other"> go to other page</a>'
-            . $end;
-        return $html;
-    }
-
-    public function other()
-    {
-        global $head, $style, $body, $end;
-
-        $html = $head . tag('title', 'Hello/Other') . $style .
-        $body
-        . tag('h1', 'Other') . tag('p', 'this is Other page')
-        . $end;
-        return $html;
+        $data = ['msg' => 'これはコントローラから渡されたメッセージです．'];
+        // msgに対して値を打ち込め！！
+        return view('hello.index', $data);
     }
 }
