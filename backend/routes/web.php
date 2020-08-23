@@ -1,30 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Middleware\HelloMiddleware;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/hello', function () {
-//     return '<html><body><h1>Hello</h1><p>This is sample.page</p></body></html>';
-// });
+Route::post('hello', 'HelloController@post');
 
-
-// indexアクションにルートを割り当てる, ルートパラメータを使ってみる
-// Route::get('hello', 'HelloController@index');
-// Route::get('hello/other', 'HelloController@other');
-
-// phpテンプレートを表示させる.ルートパラメータを使ってみる
-Route::get('hello', 'HelloController@index');
+// ミドルウェアを使ってみる
+Route::get('hello', 'HelloController@index')
+    ->middleware(HelloMiddleware::class);
