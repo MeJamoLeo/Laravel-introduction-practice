@@ -11,4 +11,4 @@ Route::post('hello', 'HelloController@post');
 
 // ミドルウェアを使ってみる
 Route::get('hello', 'HelloController@index')
-    ->middleware(HelloMiddleware::class);
+    ->middleware('hello');
