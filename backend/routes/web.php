@@ -7,8 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('hello', 'HelloController@post');
 
 // ミドルウェアを使ってみる
-Route::get('hello', 'HelloController@index')
-    ->middleware('hello');
+Route::get('hello', 'HelloController@index');
+Route::post('hello', 'HelloController@post');
