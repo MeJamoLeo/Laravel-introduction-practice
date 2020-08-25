@@ -19,7 +19,6 @@
     }
 --}}
 <table>
-    {{$errors}}
 <form action="/hello" method="post">
     {{-- 古い記述方法　{{ csrf_field() }} --}}
 @csrf
