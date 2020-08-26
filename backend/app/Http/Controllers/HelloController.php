@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\HelloRequest;
+use Validator;
 
 class HelloController extends Controller
 {
@@ -13,8 +14,25 @@ class HelloController extends Controller
     }
 
     // ここのコントローラにはバリデーションが存在しない
-    public function post(HelloRequest $request)
+    public function post(Request $request)
     {
-        return view('hello.index', ['msg' => '正しく入力されました']);
+        // Validateクラスのインスタンスを生成
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' => 'required',
+                'mail' => 'email',
+                'age' => 'numeric|between:0,150',
+            ]
+        );
+
+        // エラーのチェック
+        if ($validator->fails()) {
+            // 入力フォームへリダイレクト
+            return redirect('/hello')
+                ->withErrors($validator) // エラーメッセージをそのまま引き継ぐ
+                ->withInput(); //送信されたフォームをそのまま引き継ぐ
+        }
+        return view('hello.index', ['msg' => '正しく入力されました！']);
     }
 }
