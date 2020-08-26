@@ -8,9 +8,25 @@ use Validator;
 
 class HelloController extends Controller
 {
+    // クエリ文字列にバリデータを作成する．
     public function index(Request $request)
     {
-        return view('hello.index', ['msg' => 'フォームを入力：']);
+        // クエリ文字列を配列で取得し，第2引数でルールを記述する
+        $validator = Validator::make(
+            $request->query(),
+            [
+                'id' => 'required',
+                'pass' => 'required',
+            ]
+        );
+
+        if ($validator->fails()) {
+            $msg = 'クエリーに問題があります．';
+        } else {
+            $msg = 'ID/PASSを受け付けました．フォームを入力ください';
+        };
+
+        return view('hello.index', ['msg' => $msg,]);
     }
 
     // ここのコントローラにはバリデーションが存在しない
