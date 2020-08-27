@@ -20,8 +20,7 @@
 --}}
 <table>
 <form action="/hello" method="post">
-    {{-- 古い記述方法　{{ csrf_field() }} --}}
-@csrf
+{{-- @csrf --}}
     @if ($errors->has('name'))
     <tr><th>ERROR</th><td>{{$errors->first('name')}}</td></tr>
     @endif
