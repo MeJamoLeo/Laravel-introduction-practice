@@ -30,6 +30,18 @@
             border-top: 1px dashed #ddd;
         }
 
+        th {
+            background-color: #999;
+            color: #fff;
+            padding: 5px, 10px
+        }
+
+        td {
+            border: solid 1px #aaa;
+            color: #999;
+            padding: 5px, 10px
+        }
+
         .menutitle {
             font-size: 14px;
             font-weight: bold;
@@ -48,7 +60,6 @@
             color: #ccc;
         }
     </style>
-</head>
 
 <body>
     <h1>@yield('title')</h1>
