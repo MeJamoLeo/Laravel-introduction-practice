@@ -7,6 +7,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('person', 'PersonController@index');
+
 
 // ミドルウェアを使ってみる
 Route::get('hello', 'HelloController@index');
